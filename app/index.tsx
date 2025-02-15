@@ -12,25 +12,25 @@ export default function Index() {
            try {
                const savedCount = await AsyncStorage.getItem("counter");
                if (savedCount !== null) {
-                   setCount(JSON.parse(savedCount));
+                   setCount(parseInt(savedCount));
                }
-           } catch (error) {
-          console.error("Error in retrieving the count:", error);
+           } catch (e) {
+          console.e("Error in retrieving the count:", error);
           }
        };
-   getCount();
+       getCount();
    }, []);
 
 
     useEffect(() => {
         const saveCount = async () => {
             try {
-                await AsyncStorage.setItem("counter", JSON.stringify(count));
-            } catch (error) {
-                console.error("Error in saving the count:", error);
+                await AsyncStorage.setItem("counter", count.toString());
+            } catch (e) {
+                console.e("Error in saving the count:", error);
             }
         };
-    saveCount();
+        saveCount();
     }, [count]);
 
   return (
@@ -73,12 +73,13 @@ const styles = StyleSheet.create({
         },
     title: {
         fontSize: 24,
-        fontWeight: "bold"
+        fontWeight: "bold",
+        marginBottom: 15,
         },
     counter: {
-        fontSize: 24,
+        fontSize: 32,
         fontWeight: "bold",
-        marginBottom: 10,
+        marginBottom: 15,
         },
     btnContainer: {
         flexDirection: "row",
@@ -93,17 +94,17 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         },
     btnRed: {
-        backgroundColor: "#FF3B30", // Rosso
+        backgroundColor: "#FF3B30",
         },
     btnGreen: {
-        backgroundColor: "#4CD964", // Verde
+        backgroundColor: "#4CD964",
         },
     btnPressed: {
-        opacity: 0.6, // Effetto hover (quando premuto)
+        opacity: 0.6,
         },
     btnText: {
         fontSize: 24,
         color: "#fff",
         fontWeight: "bold",
         },
-    })
+});
