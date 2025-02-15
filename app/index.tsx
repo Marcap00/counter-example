@@ -10,6 +10,9 @@ export default function Index() {
       <Text
       style={styles.title}
       >Counter App</Text>
+      <Text
+      style={styles.counter}
+      >0</Text>
 
     </View>
   );
@@ -21,9 +24,13 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "fff",
+        backgroundColor: "#fff",
         },
     title: {
+        fontSize: 24,
+        fontWeight: "bold"
+        },
+    counter: {
         fontSize: 24,
         fontWeight: "bold"
         }
